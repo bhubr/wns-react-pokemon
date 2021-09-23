@@ -23,19 +23,25 @@ function App() {
 
   useEffect(() => {
     async function fetchPokemonList() {
-      let data = await getPokemonList();
-      if (data) {
-        setPokemonList(data.results);
+      let dataOrUndef = await getPokemonList();
+      if (dataOrUndef) {
+        setPokemonList(dataOrUndef.results);
       }
     }
 
     fetchPokemonList();
-  });
+  }, []);
 
   // Loop sur le state
   return (
     <div className="App">
-      <Pokemon name="Alfonse" url="" />
+      {pokemonList.map((pokemon) => (
+        <Pokemon
+          key={pokemon.name}
+          name={pokemon.name}
+          url={pokemon.url}
+        />
+      ))}
     </div>
   );
 }
