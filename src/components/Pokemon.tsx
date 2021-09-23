@@ -1,9 +1,6 @@
-interface PokemonProps {
-    name : string
-    url : string
-}
+import { IPokemon } from "../interfaces"
 
-function Pokemon(props: PokemonProps) {
+function Pokemon(props: IPokemon) {
     return (
         <div>
             <h3>{props.name}</h3>

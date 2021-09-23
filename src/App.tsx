@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
 
+import pokemonSample from "./data/pokemon-sample";
+import PokemonDetails from "./components/PokemonDetails";
 import Pokemon from "./components/Pokemon";
 import { IPokemon, PokeAPIResponseList } from "./interfaces";
 
@@ -35,13 +37,21 @@ function App() {
   // Loop sur le state
   return (
     <div className="App">
-      {pokemonList.map((pokemon) => (
-        <Pokemon
-          key={pokemon.name}
-          name={pokemon.name}
-          url={pokemon.url}
-        />
-      ))}
+      <div>
+        {pokemonList.map((pokemon) => (
+          <Pokemon
+            key={pokemon.name}
+            name={pokemon.name}
+            url={pokemon.url}
+          />
+        ))}
+      </div>
+      <PokemonDetails
+        id={pokemonSample.id}
+        name={pokemonSample.name}
+        weight={pokemonSample.weight}
+        sprites={pokemonSample.sprites}
+      />
     </div>
   );
 }
