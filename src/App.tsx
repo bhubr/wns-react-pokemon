@@ -1,24 +1,13 @@
 import { useState, useEffect } from "react";
-import axios, { AxiosResponse } from "axios";
 
 import pokemonSample from "./data/pokemon-sample";
 import PokemonDetails from "./components/PokemonDetails";
 import Pokemon from "./components/Pokemon";
 import { IPokemon, PokeAPIResponseList } from "./interfaces";
+import { getPokemonList } from "./utils/pokemon-api";
 
 import "./App.css";
 
-async function getPokemonList(): Promise<PokeAPIResponseList | undefined> {
-  try {
-    const response: AxiosResponse<PokeAPIResponseList> = await axios.get(
-      "https://pokeapi.co/api/v2/pokemon"
-    );
-    // Set state
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
-}
 
 function App() {
   const [pokemonList, setPokemonList] = useState<IPokemon[]>([]);
