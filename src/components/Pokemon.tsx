@@ -1,12 +1,15 @@
 import { IPokemon } from "../interfaces"
 import PokemonDetails from "./PokemonDetails";
-import { getPokemonDetails } from "../utils/pokemon-api";
 
-function Pokemon(props: IPokemon) {
+interface PokemonProps extends IPokemon {
+    onClickPokemon(url: string): Promise<void>;
+}
+
+function Pokemon(props: PokemonProps ) {
     return (
         <div>
-            <h3 onClick={(e) => getPokemonDetails(props.url)}>{props.name}</h3>
+            <h3 onClick={() => props.onClickPokemon(props.url)}>{props.name}</h3>
         </div>
-)
-    }
+    )
+}
 export default Pokemon;
